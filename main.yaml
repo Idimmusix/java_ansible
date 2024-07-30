@@ -128,7 +128,7 @@
     - name: Set PostgreSQL password for user 'postgres'
       become: yes
       become_user: postgres
-      command: psql -c "ALTER USER {{ postgres_user }} PASSWORD '{{ postgres_password }}';"
+      command: PGPASSWORD="{{ postgres_password }}" psql -c "ALTER USER {{ postgres_user }} PASSWORD '{{ postgres_password }}';"
       environment:
         TMPDIR: "$HOME"
 
